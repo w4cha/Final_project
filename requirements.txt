@@ -1,0 +1,8 @@
+cs50
+flask
+pandas
+markupsafe
+flask_session
+sqlite3
+openpyxl
+werkzeug
