@@ -1,0 +1,50 @@
+Vidrio
+<img src='/static/materiales/botellas.jpg' alt='Botellas'>
+<img src='/static/materiales/jaros.jpg' alt='Jaros'>
+$$
+Papel
+<img src='/static/materiales/kraft.png' alt='Papel kraft'>
+<img src='/static/materiales/diario.jpg' alt='Diarios'>
+$$
+Cartoncillo
+<img src='/static/materiales/cartoncillo.jpg' alt='Caja de cereal'>
+<img src='/static/materiales/cartoncillo2.jpg' alt='Cartoncillo'>
+$$
+Cartón
+<img src='/static/materiales/tubos_carton.jpg' alt='Tubos de cartón'>
+<img src='/static/materiales/cajas.jpg' alt='Cajas'>
+$$
+Plástico
+<img src='/static/materiales/clamshell.jpg' alt='Envase tipo clamshell'>
+<img src='/static/materiales/envases.jpg' alt='Envases varios de plástico'>
+<img src='/static/materiales/bolsas.jpg' alt='Bolsas plásticas'>
+$$
+Metal
+<img src='/static/materiales/latas.jpg' alt='Latas de bebida'>
+<img src='/static/materiales/conservas.jpg' alt='Latas de conserva'>
+$$
+Baterías
+<img src='/static/materiales/baterias.jpg' alt='Baterías de celular'>
+<img src='/static/materiales/baterias2.jpg' alt='Baterías de auto'>
+$$
+Celulares
+<img src='/static/materiales/celulares.jpg' alt='Celulares viejos'>
+<img src='/static/materiales/celular2.jpg' alt='Celulares Nuevos'>
+$$
+Electrodomésticos
+<img src='/static/materiales/lavadora.jpg' alt='Lavadora'>
+<img src='/static/materiales/televisor.png' alt='Televisor'>
+<img src='/static/materiales/microondas.jpg' alt='Microondas'>
+$$
+Aceite
+<img src='/static/materiales/aceite2.jpg' alt='Aceites'>
+<img src='/static/materiales/freir.jpg' alt='Frituras'>
+$$
+Pilas
+<img src='/static/materiales/pilas2.jpg' alt='Pilas'>
+$$
+Neumáticos
+<img src='/static/materiales/neumáticos2.png' alt='Neumáticos'>
+<img src='/static/materiales/macetero.jpg' alt='Maceteros de neumáticos'>
+<img src='/static/materiales/baranda.jpg' alt='Baranda de neumáticos'>
+$$

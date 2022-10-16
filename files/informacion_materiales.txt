@@ -1,0 +1,82 @@
+Vidrio
+<p>Actualmente se reciben botellas, frascos y vasos de vidrio  
+transparentes y de color los que son principalmente 
+fundidos para generar vidrio nuevo.</p><p>Antes de reciclar recordar quitar las 
+etiquetas, tapas y enjuagar con agua los envases.</p>
+$$
+Papel
+<p>En cuanto a papeles se reciben papel de impresora, boletas, facturas, revistas, 
+cuadernos, cartulinas, papel kraft, diarios, entre otros, siempre y cuando no estén manchados.</p>
+<p>Del papel reciclado es posible obtener materia prima para la fabricación de papel nuevo.</p>
+<p>Recordar remover antes de reciclar todo plásticos como envolturas 
+o metales como clips o corchetes que puedan contener el papel.</p>
+$$
+Cartoncillo
+<p>Corresponde a un tipo de cartón compuesto de solo una capa como el que se encuentra 
+en cajas de cereal. Al estar compuesto de solo una capa se recicla 
+de forma diferente a los demás tipos de cartones.</p><p>Dependiendo del sitio de reciclaje 
+se le puede depositar junto con el cartón. El cartoncillo se recicla principalmente 
+para la generación de cartoncillo nuevo.</p>
+<p>A la hora de su reciclaje revisar que el cartoncillo no presente manchas ni 
+restos de cintas adhesivas o metales como corchetes, además de aplastar el material 
+para reducir su volumen.</p>
+$$
+Cartón
+<p>Se refiere principalmente a cartones compuestos de más de una capa como el cartón 
+corrugado o cajas de embalaje, también se suele admitir según el lugar de reciclaje 
+otros materiales como tubos de papel higiénico o absorbente, cartulinas, envases Tetra Pack, 
+cartoncillos y papel kraft.</p><p>El cartón se recicla para obtener principalmente materia prima 
+para la generación de carton nuevo.</p>
+<p>Si se recicla primero se debe limpiar si presenta alguna mancha, luego remover las 
+cintas adhesivas y metales como corchetes y finalmente aplastar para disminuir su volumen.</p>
+$$
+Plástico
+<p>En Chile se recicla actualmente botellas de bebidas desechables y 
+contenedores de alimentos fabricados en base a PET (plásticos con el número 1); 
+envases de detergentes, champú, cosméticos y bidones hechos de HDPE 
+(plásticos con el número 2); tapas de botellas y otros materiales compuestos de 
+PP (plásticos con el número 5) y bolsas fabricadas con HDPE y PE (plásticos con el número 2 y 4).</p>
+<p>Los plásticos son principalmente fundidos para la generación de materia prima para plástico nuevo.</p>
+<p>Antes de reciclar el plástico se debe remover tapas y etiquetas si están presentes, además, de 
+limpiarlos con agua y aplastarlos para reducir el espacio que ocupan.</p>
+$$
+Metal
+<p>Se refiere principalmente a las latas de bebidas de aluminio y tarros 
+de conserva fabricados con hojalata los que pueden ser fundidos para obtener metal.</p>
+<p>A la hora de su reciclaje recordar previamente remover los restos de alimentos, 
+etiquetas y aplastar los contenedores.</p>
+$$
+Baterías
+<p>Según el lugar de reciclaje pueden corresponder tanto a baterías de auto como a baterías 
+de celulares. Ambos son desechos que deben ser procesados debidamente ya que presentan un riesgo 
+ambiental debido a los compuestos tóxicos que pueden desprender.</p><p>De las baterías de auto se puede 
+reciclar el plástico y sustancias como el plomo que contienen, en cuanto a baterías de celulares de 
+ellas es posible obtener metales como el litio y níquel.</p>
+$$
+Celulares
+<p>Todo tipo de celulares se pueden reciclar. Recuerda respaldar la información de tus dispositivos 
+y borrarla antes de entregarlos, además, de remover la batería (ya que se recicla por separado) 
+si es posible.</p><p>Los celulares para el reciclaje pueden ser reacondicionados para que vuelvan 
+a funcionar o ser procesados para obtener metales, plásticos y metales preciosos como el oro que 
+se encuentran en baja concentración.</p>
+$$
+Electrodomésticos
+<p>Se reciclan todo tipo de electrodomésticos, solo estando limitado al tamaño de los mismos que 
+acepte el lugar de reciclaje y que estos no contengan sustancias en su interior como el 
+líquido refrigerante en refrigeradores.</p><p>De los electrodomésticos se extrae principalmente metal, 
+plástico y metales preciosos como el oro que se encuentran en baja concentración.</p>
+$$
+Aceite
+<p>Se recicla todo tipo de aceites para cocinar, principalmente se les procesa para la obtención de 
+biocombustibles.</p>
+$$
+Pilas
+<p>Este tipo de desechos debe ser procesado adecuadamente para su reciclaje para evitar la emisión 
+de compuestos tóxicos encontrados en las pilas hacia el ambiente.</p><p>De las pilas se obtiene 
+principalmente plástico y metal.</p>
+$$
+Neumáticos
+<p>Estos se reciclan principalmente para la generación de combustible, antes de reciclar 
+revisar si los neumáticos realmente ya no sirven o no pueden ser ocupados de otras formas 
+como maceteros o barreras.</p>
+$$
