@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Editor
+{% endblock %}
+
+{% block main %}
+<!-- this page is for signed in users only here they can change, add or delete an entry (
+recyling point information) if the user is an admin he can add or delete other users additionally -->
+<div class="text" id="opciones-miembro">
+    <h2>
+        Bienvenido al modo de edición <br>
+        <a href="/out" class="link" title="cerrar sesión">Para cerrar sesión siga este link.</a>  
+    </h2>
+    <!-- Options menu for users registered either as an admin or an editor -->
+    <h3>Seleccione alguna opción para empezar a realizar cambios.</h3>
+    <h6 style="background-color: black;">Importante: todos los cambios realizados quedan registrados.</h6>
+    <select name="menu-opcion" id="opcion" onchange="get_resource(this.value, 'menu-campo');" class="notranslate">
+            <option disable selected value="default">Opciones</option>
+            <option value="contraseña">Cambiar contraseña</option>
+            {% if power == "admin" %}
+                <option value="usuarios">Agregar o eliminar usuario</option> 
+            {% endif %}
+            <option value="editar">Editar entrada</option>
+            <option value="añadir">Añadir entrada</option>
+            <option value="historial">Ver historial de cambios</option>
+    </select>
+    <!-- In this next div the contents of every option from the select above are displayed by the server -->
+    <div id="menu-campo">
+    </div>
+</div>
+{% endblock %}

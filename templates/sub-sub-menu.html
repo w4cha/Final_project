@@ -1,0 +1,75 @@
+{% if opcion == "cambio" %}
+    <!-- here an user can select an entry or recycling point value an change it for other value -->
+    <h5 style="background-color: black; margin-top: 5px;"> 
+        Seleccione un parámetro para cambiar. Si el parámetro que desea cambiar no es una opción
+        entonces el lugar no se encuentra actualmente donde está o se encuentra temporalmente cerrado,
+        si el lugar no se encuentra en su ubicación actual se recomienda seleccionar en las opciones de edición
+        eliminar entrada, si el lugar esta temporalmente cerrado entonces seleccione ocultar entrada.
+    </h5>
+    <form class="forma" method="post" action="/change">
+        <select class="notranslate" id="viejo-valor" name="attribute" onchange="optionview(this.value);">
+            <option disable selected value="default">Campo a cambiar</option>
+            <option value="owner">Dueño lugar</option>
+            <option value="manager">Administrador lugar</option>
+            <option value="glass">Añadir o eliminar vidrio</option>
+            <option value="paper">Añadir o eliminar papel</option>
+            <option value="paperboard">Añadir o eliminar cartoncillo</option>
+            <option value="cardboard">Añadir o eliminar cartón</option>
+            <option value="plastic">Añadir o eliminar plástico</option>
+            <option value="metal">Añadir o eliminar metal</option>
+            <option value="power_bank">Añadir o eliminar batería</option>
+            <option value="phone">Añadir o eliminar celular</option>
+            <option value="electronic">Añadir o eliminar electrodoméstico</option>
+            <option value="oil">Añadir o eliminar aceite</option>
+            <option value="battery">Añadir o eliminar pilas</option>
+            <option value="tire">Añadir o eliminar neumático</option>
+        </select>
+        <!-- server side generated content goes here -->
+        <div id="mater-or-person">
+        </div>
+    </form>
+{% elif opcion == "elimina" %}
+    <!-- here an user can delete an entry from the database -->
+    <h5>
+        Presione eliminar para confirmar el borrado de la entrada.
+    </h5>
+    <h6>
+        Entrada a eliminar: {{ what }}.
+    </h6>
+    <h6 style="background-color: black; text-align: center;">
+        Una vez eliminada la entrada para recuperarla se debe reingresar,
+        si no está seguro es mejor que oculte la entrada eso hace que no
+        aparezca en los resultados pero no la borra del sistema.
+    </h6>
+    <form action="/delet" method="post">
+        <div class="btn-ctn">
+            <button class="btn btn-dark" type="submit" name="borrar" value="{{ what }}">Eliminar</button>
+        </div>
+    </form>
+{% else %}
+    <!-- here an user can choose to either make an entry not appear in search results
+    or make a recycling point (entry) appear in the search results -->
+    <h5>
+        Las entradas que se muestran tiene como estatus abierto, por el contrario
+        las entradas que no se muestran tienen como estatus cerrado.
+    </h5>
+    <h6>
+        Entrada a ocultar o mostrar {{ what }}
+    </h6>
+    <h6 style="background-color: black; text-align: center;">
+        Una vez ocultada la entrada esta no vuelve a aparecer
+        en los resultados de búsqueda, para revertir una entrada ocultada
+        seleccione mostrar. Puede ver el número de las entradas ocultas 
+        en el historial de cambios.
+    </h6>
+    <form action="/show" method="post">
+        <select style="margin-bottom: 5px;" name="ocultar" class="notranslate">
+            <option disable selected value="default">Opción</option>
+            <option value="Open">Mostrar</option>
+            <option value="Close">Ocultar</option>
+        </select>
+        <div class="btn-ctn">
+            <button class="btn btn-dark" type="submit" name="entry" value="{{ what }}">Cambiar</button>
+        </div>
+    </form>
+{% endif %}

@@ -1,0 +1,41 @@
+<!-- this table shows the result of an user search after he choose a region and/or a commune
+and at least one recycling material each row in this table represent a search result the way
+the search are implemented guarantees that each search by the user gives back at least one
+search result -->
+<div id="table_info">
+    <div class="text"> 
+        <h4> Resultados de la búsqueda</h4>
+        <h5>
+            Importante: Los campos cuyo contenido sea "n/a" significa que actualmente falta información, si tienes esa información,
+             si encuentras datos erróneos o sabes de un punto limpio o verde que no se encuentra registrado aquí
+             te invitamos a que nos escribas en este <a class="link" href="/contacto" title="contáctanos">link</a> para ayudarnos a mejorar nuestra base de datos.
+        </h5>
+    </div>
+    <div id="table">
+        <table class="table table-bordered table-dark">
+            <thead class="thead-light">
+                <tr>
+                    {% for premisa in head %}
+                        <th>{{ premisa }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody name="{{ content|length }}" id="number-of-rows">
+                {% for informacion in content %}
+                    <tr name="{{ loop.index }}">               
+                    {% for element in llave %}
+                        {% if element == "the_geom" or element == "OBJECTID" %}
+                            {% continue %}
+                        {% else %}
+                            <td title="{{ label[element] }}">{{ informacion[element] }}</td>
+                        {% endif %}
+                    {% endfor %}
+                        <td title="Opciones"> 
+                            <button titile="Coordenadas" class="map_button" type="button" id="{{ loop.index }}" value="{{ informacion['the_geom'] }}" name="{{ informacion['OBJECTID'] }}" onclick="get_value(this.value, this.name, this.id);">Ver en el mapa</button>
+                        </td>
+                    </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+{% extends "template.html" %}
+
+{% block title %}
+    inicio
+{% endblock %}
+
+{% block main %}
+<!-- home page: here users can enter their region and commune to get information
+about all the recycling points from where they live each recycling point or entry found is displayed
+as a row inside a html table -->
+<div class="text">
+    <h2>Bienvenido al sistema de búsqueda de puntos verdes y limpios de Chile,</h2>
+    <h2>para comenzar seleccione una región.</h2>
+    <!-- first the user enters a region to get a list of communes and materials that are recycled
+    inside the selected region -->
+    <form>
+        <select name="zona" id="region" onchange="consulta('region');" class="notranslate">
+            <option disable selected>Región</option>
+            {% for lugar in region %}
+                <option>{{ lugar["region_id"] }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <!-- log in link if user is not logged in or link to the edit page if the user is logged in -->
+    <div id="if-user-in">
+        {% if editor == 0 %}
+            <h4 id="ingreso" title="inicio de sesión" style="text-decoration: underline; cursor: pointer;" onclick="document.querySelector('div.editar').style.display = 'flex';">
+                Si usted es un editor puede ingresar a su cuenta presionando este texto.
+            </h4>
+        {% else %}
+            <h4>
+                <a class="link" title="entrar para editar" href="/sesion_editor">Ahora puede empezar a editar en este link.</a>   
+            </h4>
+        {% endif %}
+    </div>
+    <!-- server side generated content goes here -->
+    <div id="contenido">
+        <div id="region_contenido">
+        </div>
+        <div id="materiales">
+        </div>
+    </div>
+</div>
+<!-- pop up window that shows information and a google maps iframe with the
+coordinates of a recycling point or entry -->
+<div class="modal">
+    <button id="left" value="up" title="subir" name="0" onclick="change(this.name);">&#11164;</button>
+    <div class="mapouter">
+        <div class="gmap_canvas">
+            <iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=-33.44867469085204%20-70.64996860614981&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+            </iframe>
+            <a href="https://putlocker-is.org" title="agradecimientos"></a>
+            <br>
+            <a class="link" href="https://www.embedgooglemap.net" title="pagina web del mapa">map iframe</a>
+        </div>
+    </div>
+    <!-- server side generated content goes here -->
+    <section id="mensaje" class="text">
+        <h4>Información:</h4>
+        <p id="msg_content">...</p>
+    </section>
+    <div id="cerrar2">
+        <span class="cerrar" title="Cerrar ventana" onclick="document.querySelector('div.modal').style.display = 'none';">&#128473;</span>
+    </div>
+    <button id="right" value="down" title="bajar" name="0" onclick="change(this.name);">&#11166;</button>
+</div>
+<!-- pop up window for users to log in -->
+{% if status == 0 %}
+    <div class="editar" style="display: flex;">
+{% else %}
+    <div class="editar">
+{% endif %}
+        <div class="registro">
+            <div id="close-button">
+                <span style="float: right;" class="cerrar" title="Cerrar ventana" onclick="document.querySelector('div.editar').style.display = 'none';">&#128473;</span>
+            </div>
+            <h6 class="texto-alt">
+                Portal de edición de entradas: <br>
+                para iniciar complete los siguientes campos.
+            </h6>
+            <form action="/login" method="post" class="forma">
+                <div class="mb-3">
+                    <input autocomplete="on" class="form-control mx-auto w-auto" id="email" name="email" placeholder="Correo" type="text">
+                </div>
+                <div class="mb-3">
+                    <input autocomplete="off" class="form-control mx-auto w-auto" id="password" name="password" placeholder="Contraseña" type="password">
+                </div>
+                <div class="btn-ctn">
+                    <button class="btn btn-dark" type="submit">Entrar</button>
+                </div>
+            </form>
+            <p class="texto-alt" style="margin-top: 5px;">
+                Si no está registrado como editor puede seguir el siguiente
+                <a class="link" href="/contacto" title="contactanos">link</a> para saber como convertirse en uno.
+            </p>
+        </div>
+    </div>
+{% endblock %}

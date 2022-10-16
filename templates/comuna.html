@@ -1,0 +1,19 @@
+<!-- type of materials that can be send to a punto limpio or punto verde inside the selected region or commune -->
+<div id="comuna_contenido" class="text">
+    <h6>Tipos de residuos que se reciclan en la {{ area or "comuna" }} actualmente.</h6>
+    <form>
+        {% for sustancia in material %}
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" value="{{ sustancia }}" onclick="llamar('{{ sustancia }}');">{{ sustancia }}
+                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+            </div>
+        {% endfor %}
+    </form>
+    <div>
+        <h6 id="flavour-text">Elige una o más opciones que tu lugar de reciclaje debe poder procesar.</h6>
+        <h6>
+            Para más información sobre los distintos tipos de materiales que se reciclan 
+            puedes visitar nuestra sección <a class="link" href="/reciclaje?residuos=info" title="información sobre el reciclaje">Acerca del reciclaje</a>.
+        </h6>
+    </div> 
+</div>

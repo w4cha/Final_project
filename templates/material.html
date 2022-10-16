@@ -1,0 +1,37 @@
+<div class="text">
+    <h4>
+        Ahora puede seleccionar una comuna para buscar dentro de ella<br>
+        o buscar sin seleccionar alguna y asi buscar a nivel regional.
+    </h4>
+</div>
+<!-- once a region is selected the user can choose a commune inside that region -->
+<form>
+    <select name="lugar" id="comuna" onchange="consulta('comuna');" class="notranslate">
+        <option disable selected>Comuna</option>
+        {% for lugar in comuna %}
+            <option>{{ lugar["commune_id"] }}</option>
+        {% endfor %}
+    </select>
+</form>
+<!-- this next div shows the current materials that are recycled by the selected region or commune -->
+<div id="comuna_contenido" class="text">
+    <h6>Tipos de residuos que se reciclan en la región actualmente:</h6>
+    {% for sustancia in material %}
+        <div class="form-check form-switch form-check-inline">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" value="{{ sustancia }}" onclick="llamar('{{ sustancia }}');">
+            <label class="form-check-label" for="flexSwitchCheckDefault"> {{ sustancia }} </label>
+        </div>
+    {% endfor %}
+    <div>
+        <h6 id="flavour-text">Elige una o más opciones que tu lugar de reciclaje debe poder procesar.</h6>
+        <h6>
+            Para más información sobre el reciclaje, puntos verdes, puntos limpios y los distintos tipos de materiales
+            que reciben actualmente puedes visitar nuestra sección <a class="link" href="/reciclaje" title="información sobre el reciclaje">Acerca del reciclaje</a>.
+        </h6> 
+    </div>
+</div>
+<div class="btn-group" role="group" aria-label="opciones">
+    <button type="button" class="btn btn-dark" onclick="limpia('nada');">Deseleccionar todo</button>
+    <button type="button" class="btn btn-dark" onclick="material();">Consultar</button>
+    <button type="button" class="btn btn-dark" onclick="limpia('todo');">Seleccionar todo</button>
+</div>

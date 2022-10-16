@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Contacto
+{% endblock %}
+
+{% block main %}
+<!-- this section displays the contact information of the webpage -->
+<div class="text">
+    <h2>
+        Bienvenido a la página de contacto
+    </h2>
+<section>
+    <h3 style="margin-bottom: 25px;">
+        Si quieres ser parte de nuestro equipo de editores para ayudarnos a registrar y editar entradas,
+        encontraste alguna entrada con información que no es correcta o faltante y que tu conoces, si quieres 
+        darnos recomendaciones de como mejorar este sitio o si eres un editor y tienes problemas para iniciar 
+        sesión te invitamos a escribirnos al siguiente correo: <address>recicla.chile.project@gmail.com</address>
+    </h3>
+    <h5 style="text-align: justify; margin: 7px;">
+        <p>
+            <strong style="text-decoration: underline;">Importante:</strong> Nuestro equipo responde a los correos en el orden en el que los recibe, por
+            lo que se espera que se entienda que en caso de que se reciban varios correos a la vez el tiempo de respuesta
+            a su correo tarde un poco más de lo esperado, por lo general no nos debería tomar más de una semana en
+            responder de vuelta.
+        </p>
+        <p>
+            En caso de que nos contacte por una entrada errónea o con información faltante, <b>no se olvide
+            de anotar la información de la entrada que quiere que corrijamos.</b> La información
+            de la entrada se puede encontrar al presionar el botón <button class="map_button">Ver en el mapa</button> el que hará
+            que una ventana aparezca en la cual se puede encontrar entre otra información el texto Número de entrada
+            el cual contiene el número identificador del punto verde o limpio el cual usamos para modificar entradas. Si no quiere copiar el número de entrada
+            manualmente este se copia automáticamente al presionar el botón <button class="map_button">Editar</button> que aparece debajo del número. 
+        </p>
+    </h5>
+</section>
+</div>
+{% endblock %}

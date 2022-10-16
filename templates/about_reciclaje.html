@@ -1,0 +1,206 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Reciclaje
+{% endblock %}
+
+{% block main %}
+<!-- this page describe a general picture of what recycling is about -->
+<div class="text">
+    <h2>Bienvenido a la sección de preguntas y respuestas.</h2>
+</div>
+<div class="container">
+    <!-- what is recycling -->
+    <button onclick="expand('panel_1');" class="control"><h3>¿Qué es el reciclaje?</h3></button>
+    <div id="panel_1" class="panel" style="display: none;">
+        <div id="info_reciclaje">
+            <section class="informacion">
+                <h4>Acerca del Reciclaje:</h4>
+                <p>
+                    El reciclaje consiste en la recolección de los residuos o desechos
+                    generados por la actividad humana y su transformación en productos 
+                    o materias primas nuevas para su reutilización.
+                </p>
+                <p>
+                    El proceso comienza primero con la recolección de materiales desechados, luego
+                    su separación en los distintos tipos de residuos que se reciclan (plástico, papel,
+                    vidrio, neumáticos, etc.) y termina en su procesamiento y transformación
+                    en nuevas materias primas que pueden ser usadas para la generación de productos nuevos, que
+                    probablemente también puedan ser reciclados en el futuro.
+                </p>
+                <p>
+                    Lo que se busca con el reciclaje y la razón por lo que es importante su realización, es que ayuda
+                    a combatir procesos con efectos detrimentes como lo son la contaminación del medio ambiente al reducir
+                    la cantidad de residuos que pueden terminar en nuestros vertederos, suelos y mares los que pueden generar 
+                    efectos negativos en la flora y fauna local; ayudar a la conservación de distintos recursos 
+                    naturales, al presentar la opción de reciclar materias primas en vez de extraerlas desde el medio ambiente
+                    para obtener productos nuevos, y reducir el uso de recurso como el agua, energía y la emisión de gases como el
+                    CO<sub>2</sub> (gas que es el principal responsable de provocar el proceso de cambio climático experimentado en la 
+                    actualidad) que se generarían de forma extra si en vez de reciclar para obtener nuevos productos estos se crearan desde cero.
+
+                </p>
+            </section>
+            <!-- visual support -->
+            <div class="imagen_punto">
+                <a href="/static/fondos/reciclaje.jpg" target="_blank"><img src="/static/fondos/reciclaje.jpg" title="Reciclaje"></a>
+                <a href="/static/fondos/Contaminación agua.jpg" target="_blank"><img src="/static/fondos/Contaminación agua.jpg" title="Contaminación agua"></a>
+                <a href="/static/fondos/Cambio-Climatico.jpg" target="_blank"><img src="/static/fondos/Cambio-Climatico.jpg" title="Cambio Climático"></a>
+            </div>
+        </div>
+    </div>
+    <!-- explaining the two types of recycling public installations in Chile: puntos verdes and puntos limpios -->
+    <button onclick="expand('panel_2');" class="control"><h3>¿Qué son los puntos verdes y limpios?</h3></button>
+    {% if show == 1 %}
+        <div id="panel_2" class="panel" style="display: block;">
+    {% else %}
+        <div id="panel_2" class="panel" style="display: none;">
+    {% endif %}
+        <div id="puntos_verdes">
+            <section class="informacion">
+                <h4>Puntos verdes:</h4>
+                <p>
+                    Corresponde a uno o más contenedores fijos o móviles ubicados
+                    en lugares abiertos al público, con la función de servir como
+                    puntos donde se reciben ciertos tipos de residuos (los
+                    tipos de residuos que se reciben los define cada punto verde)
+                    desde la población general para su almacenamiento y posterior envío
+                    a instalaciones de reciclaje para su revalorización o para ser eliminados.
+                </p>
+                <p>
+                    En los puntos verdes se reciben residuos sin importar si estos fueron tratados
+                    previamente según el requerimiento de cada material (por ejemplo un punto verde
+                    puede recibir a diferencia de un punto limpio botellas de plástico sin lavar, 
+                    que todavía tengan líquido o con etiquetas). Estos menores requerimientos sobre
+                    el estado en que se reciben los residuos facilitan la labor de reciclaje por parte 
+                    de la población pero, a la vez, generan que el proceso de reciclaje de los residuos
+                    sea más difícil lo que aumenta las posibilidades de que estos sean eliminados en vez
+                    de reciclados.
+                </p>
+            </section>
+            <!-- visual support -->
+            <div class="imagen_punto">
+                <a href="/static/puntos/punto_verde1.jpg" target="_blank"><img src="/static/puntos/punto_verde1.jpg" title="Punto Verde"></a>
+                <a href="/static/puntos/punto_verde2.jpg" target="_blank"><img src="/static/puntos/punto_verde2.jpg" title="Punto Verde"></a>
+            </div>
+        </div>
+        <div id="puntos_limpios">
+            <section class="informacion">
+                <h4>Puntos limpios:</h4>
+                <p>
+                    Corresponden a instalaciones fijas o móviles que se pueden encontrar 
+                    en lugares de acceso público destinadas a recibir ciertos tipos de
+                    residuos (los tipos de residuos a recibir varían ampliamente entre cada
+                    punto limpio) entregados por la población para su almacenamiento temporal
+                    y posterior envío a centros de acopio, centro de reciclaje para
+                    su revalorización o para ser eliminados.
+                </p>
+                <p>
+                    Los puntos limpios en específico se encargan de recibir solamente residuos
+                    que estén tratados según el requerimiento de cada tipo de material (por ejemplo
+                    en el caso de botellas de plástico que estas estén lavadas, sin líquido y etiquetas),
+                    esto con el objetivo de que sea más fácil llevar a cabo el proceso de reciclaje del
+                    residuo y que tenga más probabilidades de ser reciclado en vez de ser almacenado o 
+                    eliminado.
+                </p>
+            </section>
+            <!-- visual support -->
+            <div class="imagen_punto">
+                <a href="/static/puntos/punto_limpio1.jpg" target="_blank"><img src="/static/puntos/punto_limpio1.jpg" title="Punto Limpio"></a>
+                <a href="/static/puntos/punto_limpio2.png" target="_blank"><img src="/static/puntos/punto_limpio2.png" title="Punto Limpio"></a>
+            </div>
+        </div>
+    </div>
+    <!-- information about the recyclable materials that are accepted by a punto verde or punto limpio in Chile  -->
+    <button onclick="expand('panel_3');" class="control"><h3>Desechos que aceptan actualmente los puntos verdes y limpios.</h3></button>
+    {% if residuo == 1 %}
+        <div id="panel_3" class="panel" style="display: block;">
+    {% else %}
+        <div id="panel_3" class="panel" style="display: none;">
+    {% endif %}
+        <h4 style="text-align: justify; padding: 5px;">
+            Consulte al hacer click en algún tipo de residuo que subcategorías se aceptan,
+            que se hace con ellos y como deben ser tratados a la hora de ir a dejarlos a un
+            punto limpio.
+        </h4>
+        <div class="grid">
+            <div class="box" onclick="reveal('Vidrio');">
+                <div title="Vidrio" style="background-image: url('static/materiales/vidrio.jpg');"></div>
+                <h4 class="mater_id">Vidrio</h4>
+            </div>
+            <div class="box" onclick="reveal('Papel');">
+                <div title="Papel" style="background-image: url('static/materiales/papel.jpg');"></div>
+                <h4 class="mater_id">Papel</h4>
+            </div>
+            <div class="box" onclick="reveal('Cartoncillo');">
+                <div title="Cartoncillo" style="background-image: url('static/materiales/cartoncillo.jpg');"></div>
+                <h4 class="mater_id">Cartoncillo</h4>
+            </div>
+            <div class="box" onclick="reveal('Cartón');">
+                <div title="Cartón" style="background-image: url('static/materiales/carton.jpg');"></div>
+                <h4 class="mater_id">Cartón</h4>
+            </div>
+            <div class="box" onclick="reveal('Plástico');">
+                <div title="Plástico" style="background-image: url('static/materiales/plastico.jpg');"></div>
+                <h4 class="mater_id">Plástico</h4>
+            </div>
+            <div class="box" onclick="reveal('Metal');">
+                <div title="Metal" style="background-image: url('static/materiales/metal.jpg');"></div>
+                <h4 class="mater_id">Metal</h4>
+            </div>
+            <div class="box" onclick="reveal('Baterías');">
+                <div title="Baterías" style="background-image: url('static/materiales/baterias.jpg');"></div>
+                <h4 class="mater_id">Baterías</h4>
+            </div>
+            <div class="box" onclick="reveal('Celulares');">
+                <div title="Celulares" style="background-image: url('static/materiales/celulares.jpg');"></div>
+                <h4 class="mater_id">Celulares</h4>
+            </div>
+            <div class="box" onclick="reveal('Electrodomésticos');">
+                <div title="Electrodomésticos" style="background-image: url('static/materiales/electrodomésticos.jpg');"></div>
+                <h4 class="mater_id">Electrodomésticos</h4>
+            </div>
+            <div class="box" onclick="reveal('Aceite');">
+                <div title="Aceite" style="background-image: url('static/materiales/aceite.png');"></div>
+                <h4 class="mater_id">Aceite</h4>
+            </div>
+            <div class="box" onclick="reveal('Pilas');">
+                <div title="Pilas" style="background-image: url('static/materiales/pilas.jpg');"></div>
+                <h4 class="mater_id">Pilas</h4>
+            </div>
+            <div class="box" onclick="reveal('Neumáticos');">
+                <div title="Neumáticos" style="background-image: url('static/materiales/neumáticos.jpg');"></div>
+                <h4 class="mater_id">Neumáticos</h4>
+            </div> 
+        </div>
+    </div>
+</div>
+<!-- pop up window with the recyclable materials info and images -->
+<div class="modal2">
+    <button id="left" title="left" onclick="reveal(this.title);">&#11164;</button>
+    <div class="images" id="ejemplo_residuo"></div>
+    <!-- server side generated content goes here -->
+    <div class="texto">
+        <section id="texto-content" name="placeholder">
+            <h4 id="titulos"></h4>
+            <div id="parrafo"></div>
+        </section>
+    </div>
+    <div id="cerrar">
+        <span class="cerrar" title="Cerrar ventana" onclick="document.getElementsByClassName('modal2')[0].style.display = 'none';">&#128473;</span>
+    </div>
+    <button id="right" title="right" onclick="reveal(this.title);">&#11166;</button>
+</div>
+<script>
+
+    // show contents from each segment when button with a question is clicked
+    
+    function expand(thing) {
+        var what = document.getElementById(thing);
+        if (what.style.display == "none") {
+            what.style.display = "block";
+        } else {
+            what.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

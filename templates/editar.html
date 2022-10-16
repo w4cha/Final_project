@@ -1,0 +1,558 @@
+{% if modo == "editar" %}
+    <!-- first the user has to enter an entry identification number 
+    before he can start to edit that entry -->
+    <h4>
+        Ingresa el identificador de una entrada para empezar.
+    </h4>
+    <form class="forma" id="punto-id">
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" id="entry-id" oninput="consultan(this.value);" placeholder="Número de entrada" type="text">
+        </div>
+    </form>
+    <!-- server side generated content goes here -->
+    <div id="resultado">
+    </div>
+{% elif modo == "usuarios" %}
+    <!-- signed in users administration menu -->
+    <select class="notranslate" onchange="get_resource(this.value, 'user-menu');">
+        <option disable selected value="default">Opciones usuarios</option>
+        <option value="add_user">Añadir usuario</option>
+        <option value="delet_user">Eliminar usuario</option>
+    </select>
+    <!-- server side generated content goes here -->
+    <div id="user-menu"></div>
+{% elif modo == "contraseña" %}
+    <!-- form to allow signed in users to change their password -->
+    <h5>
+        Aquí puede cambiar su contraseña provisional si es un usuario nuevo<br>
+        Las contraseñas deben contener a lo menos 8 caracteres de los cuales a lo menos 2 tienen que ser números, 
+        5 a lo menos tiene que ser letras y a lo menos 1 tiene que ser un carácter que no sea ni letra ni número.<br>
+        Ejemplo contraseña: Ejemp78%
+    </h5>
+    <form action="/pass" method="post" class="forma">
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="old_password" name="contraseña actual" placeholder="Contraseña actual" type="password">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="new_password" name="contraseña nueva" placeholder="Contraseña nueva" type="password">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="confirm_password" name="confirmar contraseña" placeholder="Confirmar contraseña" type="password">
+        </div>
+        <div class="btn-ctn">
+            <button class="btn btn-dark" type="submit">Cambiar</button>
+        </div>
+    </form>
+{% elif modo == "añadir" %}
+    <!-- form to allow signed in users to add a new entry -->
+    <h4>
+        Para añadir una entrada complete los siguientes datos.
+    </h4>
+    <h5 style="background-color: black;">
+        Importante: revisar bien que el nombre de la región y comuna sean correcto para evitar nombres duplicados
+        en las búsquedas, puede ver el formato en que las entradas están escritas al <a class="link" title="descargar base de datos" href="/descarga" download>descargar la base de datos</a>. 
+        Si datos como la latitud, longitud, región, comuna, dirección o número de dirección están mal escritos la única forma de volver a cambiarlos es eliminando
+        la entrada añadida (puede ver el número de referencia de la entrada en el historial) y volverla a registrar. Se recomienda
+        usar los valores recomendados en cada campo a llenar siempre y cuando el valor a ingresar esté dentro de los valores recomendados.
+    </h5>
+    <h5>
+        Ubicación del punto (región y comuna).
+    </h5>
+    <form action="/add" method="post" class="forma">
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" list="punto-region" id="region-punto" name="región" placeholder="Nombre oficial Región" type="text">
+            <!-- recommended user input to enter a region of Chile for the new entry -->
+            <datalist id="punto-region">
+                <option value="Región de Arica y Parinacota">
+                <option value="Región de Tarapacá">
+                <option value="Región de Antofagasta">
+                <option value="Región de Atacama">
+                <option value="Región de Coquimbo">
+                <option value="Región de Valparaíso">
+                <option value="Región del Libertador General Bernardo O'Higgins">
+                <option value="Región del Maule">
+                <option value="Región de Ñuble">
+                <option value="Región del Biobío">
+                <option value="Región de La Araucanía">
+                <option value="Región de Los Ríos">
+                <option value="Región de Los Lagos">
+                <option value="Región de Aysén del G. Carlos Ibáñez del Campo">
+                <option value="Región de Magallanes y de la Antártica Chilena">
+                <option value="Región Metropolitana de Santiago">
+            </datalist>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" list="punto-comuna" id="comuna-punto" name="comuna" placeholder="Comuna" type="text">
+            <!-- recommended user input to enter a commune of Chile for the new entry -->
+            <datalist id="punto-comuna">
+                <option value="Arica">
+                <option value="Camarones">
+                <option value="General Lagos">
+                <option value="Putre">
+                <option value="Alto Hospicio">
+                <option value="Camiña">
+                <option value="Colchane">
+                <option value="Huara">
+                <option value="Iquique">
+                <option value="Pica">
+                <option value="Pozo Almonte">
+                <option value="Antofagasta">
+                <option value="Calama">
+                <option value="María Elena">
+                <option value="Mejillones">
+                <option value="Ollagüe">
+                <option value="San Pedro de Atacama">
+                <option value="Sierra Gorda">
+                <option value="Taltal">
+                <option value="Tocopilla">
+                <option value="Alto del Carmen">
+                <option value="Caldera">
+                <option value="Chañaral">
+                <option value="Copiapó">
+                <option value="Diego de Almagro">
+                <option value="Freirina">
+                <option value="Huasco">
+                <option value="Tierra Amarilla">
+                <option value="Vallenar">
+                <option value="Andacollo">
+                <option value="Canela">
+                <option value="Combarbalá">
+                <option value="Coquimbo">
+                <option value="Illapel">
+                <option value="La Higuera">
+                <option value="La Serena">
+                <option value="Los Vilos">
+                <option value="Monte Patria">
+                <option value="Ovalle">
+                <option value="Paihuano">
+                <option value="Punitaqui">
+                <option value="Río Hurtado">
+                <option value="Salamanca">
+                <option value="Vicuña">
+                <option value="Algarrobo">
+                <option value="Cabildo">
+                <option value="Calera">
+                <option value="Calle Larga">
+                <option value="Cartagena">
+                <option value="Casablanca">
+                <option value="Catemu">
+                <option value="Concón">
+                <option value="El Quisco">
+                <option value="El Tabo">
+                <option value="Hijuelas">
+                <option value="Isla de Pascua">
+                <option value="Juan Fernández">
+                <option value="La Cruz">
+                <option value="La Ligua">
+                <option value="Limache">
+                <option value="Llaillay">
+                <option value="Los Andes">
+                <option value="Nogales">
+                <option value="Olmué">
+                <option value="Panquehue">
+                <option value="Papudo">
+                <option value="Petorca">
+                <option value="Puchuncaví">
+                <option value="Putaendo">
+                <option value="Quillota">
+                <option value="Quilpué">
+                <option value="Quintero">
+                <option value="Rinconada">
+                <option value="San Antonio">
+                <option value="San Esteban">
+                <option value="San Felipe">
+                <option value="Santa María">
+                <option value="Santo Domingo">
+                <option value="Valparaíso">
+                <option value="Villa Alemana">
+                <option value="Viña del Mar">
+                <option value="Zapallar">
+                <option value="Chépica">
+                <option value="Chimbarongo">
+                <option value="Codegua">
+                <option value="Coínco">
+                <option value="Coltauco">
+                <option value="Doñihue">
+                <option value="Graneros">
+                <option value="La Estrella">
+                <option value="Las Cabras">
+                <option value="Litueche">
+                <option value="Lolol">
+                <option value="Machalí">
+                <option value="Malloa">
+                <option value="Marchihue">
+                <option value="Mostazal">
+                <option value="Nancagua">
+                <option value="Navidad">
+                <option value="Olivar">
+                <option value="Palmilla">
+                <option value="Paredones">
+                <option value="Peralillo">
+                <option value="Peumo">
+                <option value="Pichidegua">
+                <option value="Pichilemu">
+                <option value="Placilla">
+                <option value="Pumanque">
+                <option value="Quinta de Tilcoco">
+                <option value="Rancagua">
+                <option value="Rengo">
+                <option value="Requínoa">
+                <option value="San Fernando">
+                <option value="Santa Cruz">
+                <option value="San Vicente">
+                <option value="Cauquenes">
+                <option value="Chanco">
+                <option value="Colbún">
+                <option value="Constitución">
+                <option value="Curepto">
+                <option value="Curicó">
+                <option value="Empedrado">
+                <option value="Hualañé">
+                <option value="Licantén">
+                <option value="Linares">
+                <option value="Longaví">
+                <option value="Maule">
+                <option value="Molina">
+                <option value="Parral">
+                <option value="Pelarco">
+                <option value="Pelluhue">
+                <option value="Pencahue">
+                <option value="Rauco">
+                <option value="Retiro">
+                <option value="Río Claro">
+                <option value="Romeral">
+                <option value="Sagrada Familia">
+                <option value="San Clemente">
+                <option value="San Javier">
+                <option value="San Rafael">
+                <option value="Talca">
+                <option value="Teno">
+                <option value="Vichuquén">
+                <option value="Villa Alegre">
+                <option value="Yerbas Buenas">
+                <option value="Bulnes">
+                <option value="Chillán">
+                <option value="Chillán Viejo">
+                <option value="Cobquecura">
+                <option value="Coelemu">
+                <option value="Coihueco">
+                <option value="El Carmen">
+                <option value="Ninhue">
+                <option value="Ñiquén">
+                <option value="Pemuco">
+                <option value="Pinto">
+                <option value="Portezuelo">
+                <option value="Quillón">
+                <option value="Quirihue">
+                <option value="Ránquil">
+                <option value="San Carlos">
+                <option value="San Fabián">
+                <option value="San Ignacio">
+                <option value="San Nicolás">
+                <option value="Treguaco">
+                <option value="Yungay">
+                <option value="Alto Biobío">
+                <option value="Antuco">
+                <option value="Arauco">
+                <option value="Cabrero">
+                <option value="Cañete">
+                <option value="Chiguayante">
+                <option value="Concepción">
+                <option value="Contulmo">
+                <option value="Coronel">
+                <option value="Curanilahue">
+                <option value="Florida">
+                <option value="Hualpén">
+                <option value="Hualqui">
+                <option value="Laja">
+                <option value="Lebu">
+                <option value="Los Alamos">
+                <option value="Los Angeles">
+                <option value="Lota">
+                <option value="Mulchén">
+                <option value="Nacimiento">
+                <option value="Negrete">
+                <option value="Penco">
+                <option value="Quilaco">
+                <option value="Quilleco">
+                <option value="San Pedro de la Paz">
+                <option value="San Rosendo">
+                <option value="Santa Bárbara">
+                <option value="Santa Juana">
+                <option value="Talcahuano">
+                <option value="Tirúa">
+                <option value="Tomé">
+                <option value="Tucapel">
+                <option value="Yumbel">
+                <option value="Angol">
+                <option value="Carahue">
+                <option value="Cholchol">
+                <option value="Collipulli">
+                <option value="Cunco">
+                <option value="Curacautín">
+                <option value="Curarrehue">
+                <option value="Ercilla">
+                <option value="Freire">
+                <option value="Galvarino">
+                <option value="Gorbea">
+                <option value="Lautaro">
+                <option value="Loncoche">
+                <option value="Lonquimay">
+                <option value="Los Sauces">
+                <option value="Lumaco">
+                <option value="Melipeuco">
+                <option value="Nueva Imperial">
+                <option value="Padre Las Casas">
+                <option value="Perquenco">
+                <option value="Pitrufquén">
+                <option value="Pucón">
+                <option value="Purén">
+                <option value="Renaico">
+                <option value="Saavedra">
+                <option value="Temuco">
+                <option value="Teodoro Schmidt">
+                <option value="Toltén">
+                <option value="Traiguén">
+                <option value="Victoria">
+                <option value="Vilcún">
+                <option value="Villarrica">
+                <option value="Corral">
+                <option value="Futrono">
+                <option value="Lago Ranco">
+                <option value="Lanco">
+                <option value="La Unión">
+                <option value="Los Lagos">
+                <option value="Máfil">
+                <option value="Mariquina">
+                <option value="Paillaco">
+                <option value="Panguipulli">
+                <option value="Río Bueno">
+                <option value="Valdivia">
+                <option value="Ancud">
+                <option value="Calbuco">
+                <option value="Castro">
+                <option value="Chaitén">
+                <option value="Chonchi">
+                <option value="Cochamó">
+                <option value="Curaco de Vélez">
+                <option value="Dalcahue">
+                <option value="Fresia">
+                <option value="Frutillar">
+                <option value="Futaleufú">
+                <option value="Hualaihué">
+                <option value="Llanquihue">
+                <option value="Los Muermos">
+                <option value="Maullín">
+                <option value="Osorno">
+                <option value="Palena">
+                <option value="Puerto Montt">
+                <option value="Puerto Octay">
+                <option value="Puerto Varas">
+                <option value="Puqueldón">
+                <option value="Purranque">
+                <option value="Puyehue">
+                <option value="Queilén">
+                <option value="Quellón">
+                <option value="Quemchi">
+                <option value="Quinchao">
+                <option value="Río Negro">
+                <option value="San Juan de la Costa">
+                <option value="San Pablo">
+                <option value="Aysén">
+                <option value="Chile Chico">
+                <option value="Cisnes">
+                <option value="Cochrane">
+                <option value="Coyhaique">
+                <option value="Guaitecas">
+                <option value="Lago Verde">
+                <option value="O'Higgins">
+                <option value="Río Ibáñez">
+                <option value="Tortel">
+                <option value="Antártica">
+                <option value="Cabo de Hornos">
+                <option value="Laguna Blanca">
+                <option value="Natales">
+                <option value="Porvenir">
+                <option value="Primavera">
+                <option value="Punta Arenas">
+                <option value="Río Verde">
+                <option value="San Gregorio">
+                <option value="Timaukel">
+                <option value="Torres del Paine">
+                <option value="Alhué">
+                <option value="Buin">
+                <option value="Calera de Tango">
+                <option value="Cerrillos">
+                <option value="Cerro Navia">
+                <option value="Colina">
+                <option value="Conchalí">
+                <option value="Curacaví">
+                <option value="El Bosque">
+                <option value="El Monte">
+                <option value="Estación Central">
+                <option value="Huechuraba">
+                <option value="Independencia">
+                <option value="Isla de Maipo">
+                <option value="La Cisterna">
+                <option value="La Florida">
+                <option value="La Granja">
+                <option value="Lampa">
+                <option value="La Pintana">
+                <option value="La Reina">
+                <option value="Las Condes">
+                <option value="Lo Barnechea">
+                <option value="Lo Espejo">
+                <option value="Lo Prado">
+                <option value="Macul">
+                <option value="Maipú">
+                <option value="María Pinto">
+                <option value="Melipilla">
+                <option value="Ñuñoa">
+                <option value="Padre Hurtado">
+                <option value="Paine">
+                <option value="Pedro Aguirre Cerda">
+                <option value="Peñaflor">
+                <option value="Peñalolén">
+                <option value="Pirque">
+                <option value="Providencia">
+                <option value="Pudahuel">
+                <option value="Puente Alto">
+                <option value="Quilicura">
+                <option value="Quinta Normal">
+                <option value="Recoleta">
+                <option value="Renca">
+                <option value="San Bernardo">
+                <option value="San Joaquín">
+                <option value="San José de Maipo">
+                <option value="San Miguel">
+                <option value="San Pedro">
+                <option value="San Ramón">
+                <option value="Santiago">
+                <option value="Talagante">
+                <option value="Tiltil">
+                <option value="Vitacura">    
+            </datalist>
+        </div>
+        <h5>
+            Latitud, número negativo decimal, valores aproximados para Chile continental: entre -57 y menos -17, territorio antártico: entre
+            -90 y -60.
+            <br>Ejemplo: -33.4996035 
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" id="Latitud" name="latitud" placeholder="Latitud" type="text">
+        </div>
+        <h5>
+            Longitud, número negativo decimal, valores aproximados para Chile continental: entre -75 y menos -65, valor aproximado para
+            la isla de pascua: entre -109 y -110, Juan Fernandez: entre -81 a -77.<br>
+            Ejemplo: -70.7642527
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" id="Longitud" name="longitud" placeholder="Longitud" type="text">
+        </div>
+        <h5>
+            Tipo de punto: Puede ser punto verde o limpio.
+        </h5>
+        <select style="margin-bottom: 5px;" name="tipo punto" class="notranslate">
+            <option disable selected value="default">Tipo punto</option>
+            <option value="Puntos Verdes">Punto verde</option>
+            <option value="Puntos Limpios">Punto limpio</option>
+        </select>
+        <h5>
+            Calle en donde se encuentra el punto (campo no obligatorio).
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" id="Dirección" name="dirección" placeholder="Dirección" type="text">
+        </div>
+        <h5>
+            Número de calle en donde se encuentra el punto (campo no obligatorio).
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" id="Número dirección" name="número-dirección" placeholder="Número dirección" type="text">
+        </div>
+        <h5>
+            Dueño ya sea público, empresa privada, fundación, particular, etc. a la que pertenece el
+            lugar donde está ubicado el punto verde o punto limpio (campo no obligatorio).
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" id="dueño" name="dueño" placeholder="Dueño" type="text">
+        </div>
+        <h5>
+            Administradores o encargados del manejo del punto limpio o verde (campo no obligatorio).
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" id="administrador" name="administrador" placeholder="Administrador" type="text">
+        </div>
+        <div class="text">
+            <h5>
+                Seleccione los tipos de residuos que el centro recibe (seleccione al menos 1).
+            </h5>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="glass">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Vidrio</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="paper">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Papel</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="paperboard">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Cartoncillo </label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="cardboard">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Cartón </label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="plastic">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Plástico</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="metal">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Metal</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="power_bank">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Baterías</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="phone">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Celular</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="electronic">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Electrodomésticos</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="oil">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Aceite</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="battery">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Pilas</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="tire">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Neumáticos</label>
+            </div>
+            <div class="btn-ctn">
+                <button class="btn btn-dark" type="submit">Añadir</button>
+            </div>
+        </div>
+    </form>
+{% else %}
+    <!-- signed in users menu too see all the changes made to the entries
+    and all the users added or deleted by another users -->
+    <h5>
+        Selecciona que tipo de historial ver.
+    </h5>
+    <select class="notranslate" onchange="get_resource(this.value, 'target');">
+        <option disable selected value="default">Historiales</option>
+        <option value="entrada eliminada">Puntos eliminados</option>
+        <option value="nueva entrada">Puntos añadidos</option>
+        <option value="usuario añadido">Usuarios añadidos</option>
+        <option value="usuario eliminado">Usuarios eliminados</option>
+        <option value="entrada editada">Puntos editados</option>
+    </select>
+    <!-- server side generated content goes here -->
+    <div id="target"></div>
+{% endif %}

@@ -1,0 +1,136 @@
+{% if modo == "entrada" %}
+<!-- here the user can enter an entry or recycling point identification number so
+he can start to edit it by selecting one of the options in the select beneath -->
+<h4>
+    Información entrada:
+</h4>
+<div id="info-entrada">
+    <ol style="list-style-position: inside">
+    {% for info in extra %}
+        <li>{{ info }}</li>
+    {% endfor %}
+    </ol>
+</div>
+<h4>
+    Seleccione que quiere hacer con la entrada.
+</h4>
+<select name="menu-editar" class="notranslate" onchange="get_resource(this.value, 'editar-seleccion');">
+    <option disable selected value="default">Opciones edición</option>
+    <option value="cambio">Cambiar valor</option>
+    <option value="elimina">Eliminar entrada</option>
+    <option value="visibilidad">Ocultar o mostrar entrada</option>
+</select>
+<!-- server side generated content goes here -->
+<div id="editar-seleccion">
+</div>
+{% elif modo == "add_user" %}
+    <!-- this form allows a signed in admin user to add new users -->
+    <form method="post" action="/user_add">
+        <h5>
+            Ingrese el correo del usuario a añadir y luego seleccione que tipo de poder va tener.
+            La diferencia entre un editor y un administrador es que solo los administradores pueden 
+            añadir o eliminar otros usuarios.
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" name="correo usuario" placeholder="Correo usuario" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" name="contraseña provisional" placeholder="Contraseña provisional" type="text">
+        </div>
+        <select name="poder" class="notranslate">
+            <option disable selected value="default">Poder</option>
+            <option value="admin">Administrador</option>
+            <option value="editor">Editor</option>
+        </select>
+        <div class="btn-ctn" style="margin-top: 7px;">
+            <button class="btn btn-dark" type="submit" value="añadir">Añadir</button>
+        </div>
+    </form>
+{% elif modo == "delet_user" %}
+    <!-- this form allows a signed in admin user to delete users -->
+    <form method="post" action="/user_del">
+        <h5>
+            Ingrese el correo del usuario que va a eliminar.
+        </h5>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" name="correo usuario" placeholder="Correo usuario" type="text">
+        </div>
+        <div class="btn-ctn" style="margin-top: 7px;">
+            <button class="btn btn-dark" type="submit" value="eliminar">Eliminar</button>
+        </div>
+    </form>
+{% elif modo == "registro" %}
+    <!-- here a table is displayed containing all the times any user edited, added or deleted
+    a recycling point entry and all the times any user added or deleted another user -->
+    {% if might == "admin" %}
+    <h5>
+        <a class="link" title="descargar entradas eliminadas" href="/eliminados" download="">Para descargar la información de las entradas eliminadas presione este link</a>
+    </h5>
+    {% endif %}
+    <div id="historial" style="margin-top: 7px;">
+        <table class="table table-bordered table-dark">
+            <thead class="thead-light">
+                <tr>
+                    <th>Correo usuario</th>
+                    <th>Poder usuario</th>
+                    <th>Tipo de cambio</th>
+                    <th>Valor de entrada o usuario</th>
+                    <th>Fecha del cambio</th>
+                </tr>
+            </thead>
+            <tbody name="{{ entries|length }}">
+                {% if entries|length > 0 %}
+                    {% for informacion in entries %}
+                        <tr name="{{ loop.index }}">               
+                        {% for element in informacion %}
+                            <td> 
+                                {{ informacion[element] }}
+                            </td>
+                        {% endfor %}
+                        </tr> 
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% elif modo == "mater" %}
+    <!-- here an user can add or delete a recycling material from an entry or recycling point -->
+    <div id="si-no" style="margin-top: 7px;">
+        <h5>
+            Aquí puede añadir o eliminar un tipo de material a un punto verde o limpio <br>
+            para designar que se acepta o no.
+        </h5>
+        <h6>
+            Entrada a modificar: {{ what }}
+        </h6>
+        <select name="add-sub" class="notranslate">
+            <option disable selected value="default">Opción</option>
+            <option value="Si">Añadir</option>
+            <option value="No">Eliminar</option>
+        </select>
+        <div class="btn-ctn" style="margin-top: 7px;">
+            <button class="btn btn-dark" type="submit" name="valor-ref" value="{{ what }}">Cambiar</button>
+        </div>
+    </div>
+{% else %}
+    <!-- here an user can change the owner or manager of a recycling point -->
+    <div id="tipo-dato" style="margin-top: 7px;">
+        <h6>
+            Entrada a modificar: {{ what }}
+        </h6>
+        <div class="mb-3">
+            <input autocomplete="on" class="form-control mx-auto w-auto" name="nuevo-valor" placeholder="Nuevo valor" type="text">
+        </div>
+        <div class="btn-ctn" style="margin-top: 7px;">
+            <button class="btn btn-dark" type="submit" name="valor-ref" value="{{ what }}">Cambiar</button>
+        </div>
+    </div>
+{% endif %}
